@@ -17,15 +17,23 @@ function jugos(nombre){
             break;
     }
 }
-
-let menu_jugos = ["Pure Strawberry Joy","Energizer","Green garden","Tropical island","All or nothing","Especiales"];
-let lista = 10;
-let tiempo = 0;
-let mjugo;
-for (let i=0;i<lista;i++){
-    mjugo = jugos(menu_jugos[Math.floor(Math.random()*6)]);
-    tiempo += mjugo;
+function punto_uno(){
+    let menu_jugos = ["Pure Strawberry Joy","Energizer","Green garden","Tropical island","All or nothing","Especiales"];
+    let lista = 10;
+    let tiempo = 0;
+    let mjugo;
+    let seg;
+    for (let i=0;i<lista;i++){
+        mjugo = jugos(menu_jugos[Math.floor(Math.random()*6)]);
+        tiempo += mjugo;
+    }
+    if (tiempo%60 != 0){
+        seg = tiempo%60;
+        tiempo = (tiempo-seg)/60;
+        console.log("El tiempo para estos jugos es", tiempo, "minutos y", seg, "segundos");
+    }else{
+        tiempo = tiempo/60;
+        console.log("El tiempo para estos jugos es", tiempo, "minutos");
+    }
 }
-console.log(tiempo);//pruebas de que si funciona xd
-tiempo = tiempo/60;//dividir entre 60 para obtener en minutos
-console.log(tiempo);//prueba de que si funciona otra vez xd
+punto_uno();
