@@ -23,8 +23,12 @@ function punto_uno(){
     let tiempo = 0;
     let mjugo;
     let seg;
+    let jugo_actual;
+    console.log("jugos a realizar: ");
     for (let i=0;i<lista;i++){
-        mjugo = jugos(menu_jugos[Math.floor(Math.random()*6)]);
+        jugo_actual = menu_jugos[Math.floor(Math.random()*6)];
+        console.log(jugo_actual);
+        mjugo = jugos(jugo_actual);
         tiempo += mjugo;
     }
     if (tiempo%60 != 0){
@@ -37,3 +41,52 @@ function punto_uno(){
     }
 }
 punto_uno();
+// Suministro de rodajas
+function rodajas(necesarias,limas){
+    let lima_Ac;
+    let rod_ac=0;
+    let i = 0;
+    while (rod_ac<necesarias){
+        lima_Ac = limas[i];
+        if(lima_Ac === "p"){
+            rod_ac += 6;
+        }
+        if(lima_Ac === "m"){
+            rod_ac += 8;
+        }
+        if(lima_Ac === "g"){
+            rod_ac += 10;
+        }
+        i += 1;
+    }
+    return rod_ac;
+}
+function punto_dos(){
+    let limas = ["p","m","g"];
+    let rodajas_n = 30;
+    let caja = 10;
+    let lm;
+    let suministros = [];
+    let sobrantes;
+    for (let i=0;i<caja;i++){
+        lm = limas[Math.floor(Math.random()*3)];
+        suministros.push(lm);
+    }
+    cantidad = rodajas(rodajas_n,suministros);
+    console.log("Limas en la caja", suministros);
+    if (cantidad > rodajas_n){
+        sobrantes = cantidad%rodajas_n;
+        cantidad = cantidad-sobrantes;   
+        console.log("Para conseguir", rodajas_n, "rodajas se necesitan", cantidad, "limas y sobran", sobrantes, "rodajas");
+    } else{
+        console.log("Para conseguir", rodajas_n, "rodajas se necesitan", cantidad, "limas");
+    }    
+}
+punto_dos()
+// Jugos y fin de turno
+function fin_tiempo(){
+
+}
+function punto_tres(){
+
+}
