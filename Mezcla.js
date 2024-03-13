@@ -90,3 +90,37 @@ function fin_tiempo(){
 function punto_tres(){
 
 }
+
+function punto_tres(){
+    let tiempo_restantes=20;
+    tiempo_restantes*=60;
+    console.log(tiempo_restantes);
+    let menu_jugos =["Pure Strawberry Joy","Energizer","Green garden","Tropical island","All or nothing","Especiales"];
+    let tiempo =0;
+    let jugos_pen=15;
+    let mjugo;
+    let jugo_actual;
+    let juegos_a_tiempo=[];
+    let total_jugos=[];
+    console.log("jugos pendientes");
+    let br=0;
+    for (let i=0; i<=jugos_pen;i++){
+        jugo_actual=menu_jugos[math.floor(math.random()*6)];
+        total_jugos.push(jugo_actual);
+    }
+    console.log(total_jugos);
+    jugo_actual=null;
+    while(br === 0){
+        jugo_actual=total_jugos.shift();
+        mjugo=jugos(jugo_actual);
+        tiempo +=mjugo;
+        if (tiempo<=tiempo_restantes){
+            juegos_a_tiempo.push(jugo_actual);
+        }else{
+            br=1;
+        }
+    }
+    console.log("los jugos que se pueden realizar:", juegos_a_tiempo);
+    console.log("jugos que hace el chaln:", total_jugos);
+}
+punto_tres();
