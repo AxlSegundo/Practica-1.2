@@ -84,17 +84,10 @@ function punto_dos(){
 }
 punto_dos()
 // Jugos y fin de turno
-function fin_tiempo(){
-
-}
-function punto_tres(){
-
-}
-
 function punto_tres(){
     let tiempo_restantes=20;
+    console.log("El tiempo restante es ",tiempo_restantes, "minutos");
     tiempo_restantes*=60;
-    console.log(tiempo_restantes);
     let menu_jugos =["Pure Strawberry Joy","Energizer","Green garden","Tropical island","All or nothing","Especiales"];
     let tiempo =0;
     let jugos_pen=15;
@@ -105,7 +98,7 @@ function punto_tres(){
     console.log("jugos pendientes");
     let br=0;
     for (let i=0; i<=jugos_pen;i++){
-        jugo_actual=menu_jugos[math.floor(math.random()*6)];
+        jugo_actual=menu_jugos[Math.floor(Math.random()*6)];
         total_jugos.push(jugo_actual);
     }
     console.log(total_jugos);
@@ -121,6 +114,6 @@ function punto_tres(){
         }
     }
     console.log("los jugos que se pueden realizar:", juegos_a_tiempo);
-    console.log("jugos que hace el chaln:", total_jugos);
+    console.log("jugos que hace el ayudante:", total_jugos);
 }
 punto_tres();
