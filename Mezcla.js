@@ -124,4 +124,3 @@ function punto_tres(){
     console.log("jugos que hace el chaln:", total_jugos);
 }
 punto_tres();
-//hola
