@@ -23,8 +23,12 @@ function punto_uno(){
     let tiempo = 0;
     let mjugo;
     let seg;
+    let jugo_actual;
+    console.log("jugos a realizar: ");
     for (let i=0;i<lista;i++){
-        mjugo = jugos(menu_jugos[Math.floor(Math.random()*6)]);
+        jugo_actual = menu_jugos[Math.floor(Math.random()*6)];
+        console.log(jugo_actual);
+        mjugo = jugos(jugo_actual);
         tiempo += mjugo;
     }
     if (tiempo%60 != 0){
@@ -37,3 +41,79 @@ function punto_uno(){
     }
 }
 punto_uno();
+// Suministro de rodajas
+function rodajas(necesarias,limas){
+    let lima_Ac;
+    let rod_ac=0;
+    let i = 0;
+    while (rod_ac<necesarias){
+        lima_Ac = limas[i];
+        if(lima_Ac === "p"){
+            rod_ac += 6;
+        }
+        if(lima_Ac === "m"){
+            rod_ac += 8;
+        }
+        if(lima_Ac === "g"){
+            rod_ac += 10;
+        }
+        i += 1;
+    }
+    return rod_ac;
+}
+function punto_dos(){
+    let limas = ["p","m","g"];
+    let rodajas_n = 30;
+    let caja = 10;
+    let lm;
+    let suministros = [];
+    let sobrantes;
+    for (let i=0;i<caja;i++){
+        lm = limas[Math.floor(Math.random()*3)];
+        suministros.push(lm);
+    }
+    cantidad = rodajas(rodajas_n,suministros);
+    console.log("Limas en la caja", suministros);
+    if (cantidad > rodajas_n){
+        sobrantes = cantidad%rodajas_n;
+        cantidad = cantidad-sobrantes;   
+        console.log("Para conseguir", rodajas_n, "rodajas se necesitan", cantidad, "limas y sobran", sobrantes, "rodajas");
+    } else{
+        console.log("Para conseguir", rodajas_n, "rodajas se necesitan", cantidad, "limas");
+    }    
+}
+punto_dos()
+// Jugos y fin de turno
+function punto_tres(){
+    let tiempo_restantes=20;
+    console.log("El tiempo restante es ",tiempo_restantes, "minutos");
+    tiempo_restantes*=60;
+    let menu_jugos =["Pure Strawberry Joy","Energizer","Green garden","Tropical island","All or nothing","Especiales"];
+    let tiempo =0;
+    let jugos_pen=15;
+    let mjugo;
+    let jugo_actual;
+    let juegos_a_tiempo=[];
+    let total_jugos=[];
+    console.log("jugos pendientes");
+    let br=0;
+    for (let i=0; i<=jugos_pen;i++){
+        jugo_actual=menu_jugos[Math.floor(Math.random()*6)];
+        total_jugos.push(jugo_actual);
+    }
+    console.log(total_jugos);
+    jugo_actual=null;
+    while(br === 0){
+        jugo_actual=total_jugos.shift();
+        mjugo=jugos(jugo_actual);
+        tiempo +=mjugo;
+        if (tiempo<=tiempo_restantes){
+            juegos_a_tiempo.push(jugo_actual);
+        }else{
+            br=1;
+        }
+    }
+    console.log("los jugos que se pueden realizar:", juegos_a_tiempo);
+    console.log("jugos que hace el ayudante:", total_jugos);
+}
+punto_tres();
