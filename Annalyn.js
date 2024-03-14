@@ -69,9 +69,9 @@ function arqueroDormido() {
    let prisionero = prisioneroDespierto();
    let perro = tienePerro();
     console.log("\nEstado de los personajes: \n");
-   console.log("Caballero dormido:", caballero);
-   console.log("Arquero dormido:", arquero);
-   console.log("Prisionero despierto:", prisionero);
+   console.log("Caballero:", caballero);
+   console.log("Arquero:", arquero);
+   console.log("Prisionero:", prisionero);
    console.log("Annalyn tiene su perro:", perro);
     // Llamamos a la función accionesDisponibles con los estados actuales de los personajes
 let acciones = accionesDisponibles(caballero, arquero, prisionero, perro);
